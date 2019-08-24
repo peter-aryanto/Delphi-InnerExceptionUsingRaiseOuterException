@@ -31,6 +31,7 @@ begin
   except
     on E: Exception do
     begin
+      E.Message := E.Message + ' Called from ' + Copy(ClassName, 2, MaxInt) + '.';
       E{xception}.RaiseOuterException(Exception.Create(LMessage));
     end;
   end;
